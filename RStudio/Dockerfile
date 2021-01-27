@@ -12,6 +12,9 @@ RUN apt update && apt upgrade -y \
   libssh2-1-dev \
   libgsl0-dev \
   libclang-dev \
-  libpq-dev
+  libpq-dev \
+  openssh-client \
+  libxml2 \
+  libglpk-dev 
   
 RUN R -e "install.packages(c('rmarkdown','dplyr','tidyr','tibble','ggplot2','magrittr','RPostgreSQL','mongolite','stringr','purrr','RColorBrewer'))"
