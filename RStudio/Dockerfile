@@ -17,4 +17,4 @@ RUN apt update && apt upgrade -y \
   libxml2 \
   libglpk-dev 
   
-RUN R -e "install.packages(c('rmarkdown','dplyr','tidyr','tibble','ggplot2','magrittr','RPostgreSQL','mongolite','stringr','purrr','RColorBrewer'))"
+RUN R -e "install.packages(c('rmarkdown','dplyr','tidyr','tibble','ggplot2','magrittr','RPostgreSQL','mongolite','stringr','purrr','RColorBrewer','DT'))"
