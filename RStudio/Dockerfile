@@ -1,5 +1,8 @@
 FROM docker.io/rocker/rstudio:4.0.3
 
+#ENV PATH="/root/miniconda3/bin:${PATH}"
+#ARG PATH="/root/miniconda3/bin:${PATH}"
+
 
 RUN apt update && apt upgrade -y \
   && apt install -y \
@@ -17,4 +20,10 @@ RUN apt update && apt upgrade -y \
   libxml2 \
   libglpk-dev 
   
-RUN R -e "install.packages(c('rmarkdown','dplyr','tidyr','tibble','ggplot2','magrittr','RPostgreSQL','mongolite','stringr','purrr','RColorBrewer'))"
+RUN R -e "install.packages(c('rmarkdown','dplyr','tidyr','tibble','ggplot2','magrittr','RPostgreSQL','mongolite','stringr','purrr','RColorBrewer','renv','golem','reticulate'))"
+
+USER rstudio
+
+RUN R -e "reticulate::install_miniconda()"
+
+USER root
