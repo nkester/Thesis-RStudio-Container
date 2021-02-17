@@ -18,7 +18,11 @@ RUN apt update && apt upgrade -y \
   libpq-dev \
   openssh-client \
   libxml2 \
-  libglpk-dev 
+  libglpk-dev \
+  libgit2-dev
+
+# This didn't work
+#RUN export ADD=shiny && bash /etc/cont-init.d/add
   
 RUN R -e "install.packages(c('rmarkdown','dplyr','tidyr','tibble','ggplot2','magrittr','RPostgreSQL','mongolite','stringr','purrr','RColorBrewer','renv','golem','reticulate'))"
 
