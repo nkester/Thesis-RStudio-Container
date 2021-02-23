@@ -19,12 +19,14 @@ RUN apt update && apt upgrade -y \
   openssh-client \
   libxml2 \
   libglpk-dev \
-  libgit2-dev
+  libgit2-dev \
+  python3-venv \
+  libpython3-dev
 
 # This didn't work
 #RUN export ADD=shiny && bash /etc/cont-init.d/add
   
-RUN R -e "install.packages(c('rmarkdown','dplyr','tidyr','tibble','ggplot2','magrittr','RPostgreSQL','mongolite','stringr','purrr','RColorBrewer','renv','golem','reticulate'))"
+RUN R -e "install.packages(c('rmarkdown','dplyr','tidyr','tibble','ggplot2','magrittr','RPostgreSQL','mongolite','stringr','purrr','RColorBrewer','renv','golem','reticulate','png'))"
 
 USER rstudio
 
