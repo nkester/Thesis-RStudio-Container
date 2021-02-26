@@ -21,7 +21,8 @@ RUN apt update && apt upgrade -y \
   libglpk-dev \
   libgit2-dev \
   python3-venv \
-  libpython3-dev
+  libpython3-dev \
+  zsh
 
 # This didn't work
 #RUN export ADD=shiny && bash /etc/cont-init.d/add
