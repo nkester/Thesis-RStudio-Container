@@ -1,6 +1,38 @@
-# Thesis Container  
+# JHU Thesis RStudio Container
 
-# Interacting with Podman
+I built this container to support my thesis work. It takes the base rocker rstudio container from Docker Hub, updates and installs required system libraries and then installs all required additional R Packages.  
+
+This container image is connected to my Docker Hub repository at [neilkester/thesis-rstudio](https://hub.docker.com/repository/docker/neilkester/thesis-rstudio). Docker Hub automatically builds a new version of this container as changes are made to this GitHub project's Master branch.
+
+I reference this container image in my Thesis-Charts GitHub project as the source image of the RStudio component of that Helm Chart and Rancher Questions file.
+
+## R Packages included in this image  
+
+R Packages:
+  rmarkdown  
+  dplyr  
+  tidyr  
+  tibble  
+  ggplot2  
+  magrittr  
+  RPostgreSQL  
+  mongolite  
+  stringr  
+  purrr  
+  RColorBrewer  
+  renv  
+  golem  
+  reticulate  
+  
+Also, Miniconda3-latest-Linux-x86_64
+
+## Building this image locally with Buildah
+
+If building this image locally, use the buildah command below. Note to update the tag (currently `v1.4`) to something more meaningful. Also, this assumes you are in this GitHub project's folder. If not, replace `.` with the relative or absolute path to the Dockerfile.
+
+`buildah build-using-dockerfile -f Dockerfile -t docker.io/neilkester/thesis-rstudio:v1.4 .`
+
+## Interacting with Podman
 
 Running a Container
 
@@ -28,7 +60,3 @@ As of 2021-02-05 there has been a change to Podman that breaks it when running i
 Run the pod in detached mode for RStudio with:  
 
 `podman run -d -p 8787:8787 -e PASSWORD=mypass --rm --events-backend=file --cgroup-manager=cgroupfs docker.io/neilkester/thesis-rstudio:v1.2 bash` 
-
-# Building with Buildah  
-
-`buildah build-using-dockerfile -f Dockerfile -t docker.io/neilkester/thesis-rstudio:v1.3 ./RStudio/`
